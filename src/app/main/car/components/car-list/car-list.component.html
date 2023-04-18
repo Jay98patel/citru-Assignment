@@ -1,0 +1,15 @@
+<div class="d-flex flex-wrap justify-content-center">
+  <div *ngFor="let car of carList" class="card m-3" style="width: 18rem">
+    <img [src]="car.image" class="card-img-top" [alt]="car.model" />
+    <div class="card-body">
+      <h5 class="card-title">{{ car.model }}</h5>
+      <p class="card-text">
+        {{ car.make }}
+      </p>
+      <p>
+        {{ car.year }}
+      </p>
+      <p class="badge rounded-pill bg-primary">{{ car.price }}</p>
+    </div>
+  </div>
+</div>

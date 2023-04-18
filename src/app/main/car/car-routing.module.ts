@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CarComponent } from './car.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'cars',
+    redirectTo: 'carList',
     pathMatch: 'full',
   },
   {
-    path: 'cars',
-    loadChildren: () =>
-      import('./main/car/car.module').then((m) => m.CarModule),
+    path: 'carList',
+    component: CarComponent,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class CarRoutingModule {}

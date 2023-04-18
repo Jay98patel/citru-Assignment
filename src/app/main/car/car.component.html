@@ -1,0 +1,51 @@
+<div class="d-flex flex-column h-100 overflow-hidden">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img
+          src="../../../assets/images/logo.png"
+          alt=""
+          width="45"
+          height="45"
+        />
+        Cirtru Cars</a
+      >
+    </div>
+  </nav>
+  <div class="p-3 h-100 overflow-auto">
+    <ng-container *ngIf="filterButton.length">
+      <div class="d-flex">
+        <h6>Filter By</h6>
+        <p
+          *ngIf="showResetButton"
+          (click)="resetFilter()"
+          class="cursor-pointer badge bg-danger mx-3"
+        >
+          Reset
+        </p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="cursor-pointer" *ngFor="let button of filterButton">
+          <span [ngClass]="button.color" class="mx-2 p-2 badge rounded-pill">
+            {{ button.filterBy }}
+          </span>
+          <div class="d-flex flex-column flex-wrap h-50">
+            <p
+              class="m-1"
+              *ngFor="let value of button.value; let i = index"
+              (click)="filter(button, value, i)"
+              [ngClass]="{
+                'badge text-dark bg-warning rounded-pill': value.isActive
+              }"
+            >
+              {{ value.val }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <app-car-list [carList]="cars"></app-car-list>
+      </div>
+    </ng-container>
+  </div>
+</div>
